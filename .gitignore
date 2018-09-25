@@ -1,0 +1,6 @@
+/.apt_generated/
+WebContent/WEB-INF/classes/
+.settings
+.classpath
+.factorypath
+.project
