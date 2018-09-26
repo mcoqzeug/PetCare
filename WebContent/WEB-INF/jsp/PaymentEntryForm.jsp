@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<textarea rows="2" cols=""> You need to pay 45$. </textarea>
 </body>
 </html>

@@ -3,13 +3,13 @@ package edu.osu.cse5234.model;
 import java.util.*;
 
 public class Order {
-	private List<Item> itemList;
+	private List<Item> items;
 	
-	public List<Item> getItemList() {
-		return itemList;
+	public List<Item> getItems() {
+		return items;
 	}
 	
-	public void setItemList(List<Item> itemList) {
-		this.itemList = itemList;
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 }
