@@ -1,6 +1,9 @@
 package edu.osu.cse5234.controller;
 
-import java.util.*;
+import java.time.ZonedDateTime;
+import java.util.List;
+import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,11 +22,11 @@ public class Purchase {
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Order order = new Order();
-		List<Item> itemList = Arrays.asList(
-				new Item("Dry Cat Food", "12.99", "1"), 
-				new Item("Wet Cat Food", "15.99", "1"),
-				new Item("Cat Litter", "19.99", "1"));
-		order.setItems(itemList);
+		List<Item> items = Arrays.asList(
+				new Item("Dry Cat Food", "12.99", "0"), 
+				new Item("Wet Cat Food", "15.99", "0"),
+				new Item("Cat Litter", "19.99", "0"));
+		order.setItems(items);
 		request.setAttribute("order", order);
 		return "OrderEntryForm";
 	}
@@ -36,7 +39,7 @@ public class Purchase {
 	
 	@RequestMapping(path = "/paymentEntry", method = RequestMethod.GET)
 	public String viewPaymentEntryForm(HttpServletRequest request, HttpServletResponse response) {
-		request.setAttribute("payment", new PaymentInfo());	
+		request.setAttribute("paymentInfo", new PaymentInfo());	
 		return "PaymentEntryForm";
 	}
 	
@@ -64,8 +67,11 @@ public class Purchase {
 	}
 	
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
-	public String confirmOrder(@ModelAttribute("order") Order order, HttpServletRequest request) {
-		request.getSession().setAttribute("order", order);
+	public String confirmOrder(HttpServletRequest request) {
+		long date = ZonedDateTime.now().toInstant().toEpochMilli();
+		long randomNum = ThreadLocalRandom.current().nextInt(1000, 9999+1);
+		
+		request.getSession().setAttribute("confirmationNum", date*10000+randomNum);
 		return "redirect:/purchase/confirmation";
 	}
 	
