@@ -20,12 +20,12 @@ public class MyWebConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/js/**").addResourceLocations("/js/");
 	}
 
-    @Bean
-    public InternalResourceViewResolver getInternalResourceViewResolver() {
-    	InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/jsp/");
-        resolver.setSuffix(".jsp");
-        return resolver;
-    }
+	@Bean
+	public InternalResourceViewResolver getInternalResourceViewResolver() {
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		resolver.setPrefix("/WEB-INF/jsp/");
+		resolver.setSuffix(".jsp");
+		return resolver;
+	}
 
 }

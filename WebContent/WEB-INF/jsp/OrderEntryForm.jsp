@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -11,8 +11,14 @@
 </head>
 <body>
 <form:form modelAttribute="order" method="post" action="purchase/submitItems">
-    <table>
+	<table>
+		<tr>
+			<td>Name</td>
+			<td>Price</td>
+			<td>Quantity</td>
+		</tr>
 	<c:forEach items="${order.items}" var="item" varStatus="loop">
+		
 		<tr>
 			<td><c:out value="${item.name}"></c:out></td>
 			<form:input type="hidden" path="items[${loop.index}].name"/>
@@ -24,7 +30,7 @@
 		<tr>
 			<td colspan="2"><input type="submit" value="Purchase"></td>
 		</tr>
-    </table>
+	</table>
 </form:form>
 </body>
 </html>
