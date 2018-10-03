@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/PetCare/purchase">Purchase</a>
+<div class="header">
+	<h1>Pet Care</h1>
+	<a href="/PetCare/purchase">Purchase</a>
+</div>
 </body>
 </html>

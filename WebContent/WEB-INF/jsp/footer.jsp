@@ -7,6 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-Copyright...
+<div class="footer">
+	<div class="row">
+	    <div class="column left">
+	        <p> <STRONG>Team Members</STRONG>
+	            <br>
+	            <br>Juanxi Li (CSE)
+	        </p>
+	    </div>
+	    <div class="column right">
+	        <p> <STRONG>LINK</STRONG> </p>
+	    </div>
+	</div>
+	<div class="row"> Copyright... </div>
+</div>
 </body>
 </html>

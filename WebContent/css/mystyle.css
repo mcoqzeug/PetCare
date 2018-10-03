@@ -25,6 +25,7 @@ body {
 	margin: 10px;
 }
 
+/*
 .footer {
 	clear: both;
 	position: inherit;
@@ -36,7 +37,37 @@ body {
 	background-color: #808080;
 	color:#fff;
 }
+*/
 
+.column {
+    float: left;
+    padding: 10px;
+    /*height: 300px; !* Should be removed. Only for demonstration *!*/
+}
+
+.left {
+    width: 55%;
+}
+
+.right {
+    width: 45%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.footer {
+    margin-left: 80px;
+    margin-right: 80px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: black;
+    border-top: 2px dashed #E0E0E0;
+    clear: left;
+    text-align: left;
+}
 
 .prodheading {
 	width: 100%;
