@@ -10,32 +10,37 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<div class="container">
+	<jsp:include page="header.jsp"/>
 
-<form:form modelAttribute="paymentInfo" method="post" action="submitPayment">
-	<table>
-		<tr>
-			<td><c:out value="Credit Card Number"></c:out></td>
-			<td><form:input path="creditCardNumber" /></td>
-		</tr>
-		<tr>
-			<td><c:out value="Expiration Date"></c:out></td>
-			<td><form:input path="expirationDate" /></td>
-		</tr>
-		<tr>
-			<td><c:out value="CVV Code"></c:out></td>
-			<td><form:input path="cvvCode" /></td>
-		</tr>
-		<tr>
-			<td><c:out value="Cardholder Name"></c:out></td>
-			<td><form:input path="cardHolderName" /></td>
-		</tr>
-		<tr>
-			<td colspan="2"><input type="submit" value="Submit"></td>
-		</tr>
-	</table>
-</form:form>
-
-<jsp:include page="footer.jsp"/>
+	<div class="main">
+		<form:form modelAttribute="paymentInfo" method="post" action="submitPayment">
+				<table>
+					<tr>
+						<td><c:out value="Credit Card Number"></c:out></td>
+						<td><form:input path="creditCardNumber" /></td>
+					</tr>
+					<tr>
+						<td><c:out value="Expiration Date"></c:out></td>
+						<td><form:input path="expirationDate" /></td>
+					</tr>
+					<tr>
+						<td><c:out value="CVV Code"></c:out></td>
+						<td><form:input path="cvvCode" /></td>
+					</tr>
+					<tr>
+						<td><c:out value="Cardholder Name"></c:out></td>
+						<td><form:input path="cardHolderName" /></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="submit" value="Submit"></td>
+					</tr>
+				</table>
+			</form:form>
+	</div>
+	
+	
+	<jsp:include page="footer.jsp"/>
+</div>
 </body>
 </html>

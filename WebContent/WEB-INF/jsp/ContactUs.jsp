@@ -7,6 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 
+<div class="main">
+    <h1>Contact Us</h1>
+    <table>
+        <tr>
+            <th>Call Us</th>
+            <td>888-888-8888</td>
+        </tr>
+        <tr>
+            <th>Email Us</th>
+            <td> <a class="mainlink" href="mailto:service@petcare.com">service@petcare.com</a> </td>
+        </tr>
+    </table>
+</div>
+
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

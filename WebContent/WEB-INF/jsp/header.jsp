@@ -10,25 +10,12 @@
 <div class="header">
 	<div class="headerIn">
 		<h1 class="companyName">PetCare</h1>
-
 		<ul>
-			<li><a href="/PetCare/">Home</a></li>
-			<li><a href="/PetCare/purchase">Purchase</a></li>
-			<li><a href="/PetCare/AboutUs">About Us</a></li>
-			<li><a href="/PetCare/ContactUs">Contact Us</a></li>
+			<li><a class="navigation" href="/PetCare/">Home</a></li>
+			<li><a class="navigation" href="/PetCare/purchase">Purchase</a></li>
+			<li><a class="navigation" href="/PetCare/AboutUs">About Us</a></li>
+			<li><a class="navigation" href="/PetCare/ContactUs">Contact Us</a></li>
 		</ul>
-
-
-
-
-		<!-- <table id="navigation">
-			<tr>
-				<td><a href="/PetCare/">Home</a></td>
-				<td><a href="/PetCare/purchase">Purchase</a></td>
-				<td><a href="/PetCare/AboutUs">About Us</a></td>
-				<td><a href="/PetCare/ContactUs">Contact Us</a></td>
-			</tr>
-		</table> -->
 	</div>
 </div>
 </body>

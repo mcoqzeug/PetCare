@@ -24,6 +24,45 @@
 				Continuously Strive for excellent Service and customer Satisfaction
 			</p>
 		</div>
+
+		<div>
+				<h2>Our Vision</h2>
+				<p>
+					Quality and satisfaction to customers with their pets
+				</p>
+			</div>
+			<div>
+				<h2>Our Strategy</h2>
+				<p>
+					Continuously Strive for excellent Service and customer Satisfaction
+				</p>
+			</div>
+
+			<div>
+					<h2>Our Vision</h2>
+					<p>
+						Quality and satisfaction to customers with their pets
+					</p>
+				</div>
+				<div>
+					<h2>Our Strategy</h2>
+					<p>
+						Continuously Strive for excellent Service and customer Satisfaction
+					</p>
+				</div>
+
+				<div>
+						<h2>Our Vision</h2>
+						<p>
+							Quality and satisfaction to customers with their pets
+						</p>
+					</div>
+					<div>
+						<h2>Our Strategy</h2>
+						<p>
+							Continuously Strive for excellent Service and customer Satisfaction
+						</p>
+					</div>
 	</div>
 	
 	<jsp:include page="footer.jsp"/>
