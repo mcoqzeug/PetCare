@@ -6,9 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Shipping</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
+
 <form:form modelAttribute="shippingInfo" method="post" action="submitShipping">
 	<table>
 		<tr>
@@ -40,5 +42,7 @@
 		</tr>
 	</table>
 </form:form>
+
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

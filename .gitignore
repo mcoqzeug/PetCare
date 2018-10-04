@@ -4,3 +4,5 @@ WebContent/WEB-INF/classes/
 .classpath
 .factorypath
 .project
+*.DS_Store
+*.classes

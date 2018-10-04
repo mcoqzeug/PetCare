@@ -5,29 +5,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home Page</title>
+<title>PetCare Home</title>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<div class="container">
+	<jsp:include page="header.jsp"/>
 
-<table>
-	<tr>
-		<td>Company Name:</td><td>PetCare Shopper Stop</td>
-	</tr>
-	<tr>
-		<td>Company Vision:</td>
-		<td>Quality and satisfaction to customers with their pets</td>
-	</tr>
-	<tr>
-		<td>Company Strategy:</td>
-		<td>Continuously Strive for excellent Service and customer Satisfaction</td>
-	</tr>
-	<tr>
-		<td>Products and Services :</td>
-		<td></td>
-	</tr>
-</table>
+	<div class="main">
+		<div>
+			<h2>Our Vision</h2>
+			<p>
+				Quality and satisfaction to customers with their pets
+			</p>
+		</div>
+		<div>
+			<h2>Our Strategy</h2>
+			<p>
+				Continuously Strive for excellent Service and customer Satisfaction
+			</p>
+		</div>
+	</div>
+	
+	<jsp:include page="footer.jsp"/>
+</div>
 
-<jsp:include page="footer.jsp"/>
 </body>
 </html>

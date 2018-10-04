@@ -6,9 +6,9 @@ public class Item {
 	private String quantity;
 	
 	public Item() {
-		name = null;
-		price = null;
-		quantity = null;
+		// name = null;
+		// price = null;
+		// quantity = null;
 	}
 	
 	public Item(String name, String price, String quantity) {

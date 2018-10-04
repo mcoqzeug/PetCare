@@ -10,6 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
+
 <form:form modelAttribute="paymentInfo" method="post" action="submitPayment">
 	<table>
 		<tr>
@@ -33,5 +35,7 @@
 		</tr>
 	</table>
 </form:form>
+
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

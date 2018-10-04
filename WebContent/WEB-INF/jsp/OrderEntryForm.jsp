@@ -7,30 +7,41 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home Page</title>
+<!-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mystyle.css"> -->
+<title>Make Order</title>
 </head>
 <body>
-<form:form modelAttribute="order" method="post" action="purchase/submitItems">
-	<table>
-		<tr>
-			<td>Name</td>
-			<td>Price</td>
-			<td>Quantity</td>
-		</tr>
-	<c:forEach items="${order.items}" var="item" varStatus="loop">
-		
-		<tr>
-			<td><c:out value="${item.name}"></c:out></td>
-			<form:input type="hidden" path="items[${loop.index}].name"/>
-			<td><c:out value="$ ${item.price}"></c:out></td>
-			<form:input type="hidden" path="items[${loop.index}].price"/>
-			<td><form:input path="items[${loop.index}].quantity" /></td>
-		</tr>
-	</c:forEach>
-		<tr>
-			<td colspan="2"><input type="submit" value="Purchase"></td>
-		</tr>
-	</table>
-</form:form>
+
+<div class="container">
+	<jsp:include page="header.jsp"/>
+
+	<div class="main">
+		<form:form modelAttribute="order" method="post" action="purchase/submitItems">
+		<table>
+			<tr>
+				<td>Name</td>
+				<td>Price</td>
+				<td>Quantity</td>
+			</tr>
+		<c:forEach items="${order.items}" var="item" varStatus="loop">
+			
+			<tr>
+				<td><c:out value="${item.name}"></c:out></td>
+				<form:input type="hidden" path="items[${loop.index}].name"/>
+				<td><c:out value="$ ${item.price}"></c:out></td>
+				<form:input type="hidden" path="items[${loop.index}].price"/>
+				<td><form:input path="items[${loop.index}].quantity" /></td>
+			</tr>
+		</c:forEach>
+			<tr>
+				<td colspan="2"><input type="submit" value="Purchase"></td>
+			</tr>
+		</table>
+		</form:form>
+	</div>
+	
+	<jsp:include page="footer.jsp"/>
+</div>
+
 </body>
 </html>
