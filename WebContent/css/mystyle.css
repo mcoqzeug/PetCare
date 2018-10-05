@@ -99,6 +99,11 @@ a:visited {
 	padding-bottom:40px;   /* Height of the footer */
 }
 
+.body {
+	box-sizing: border-box;
+	padding-bottom: 80px;
+}
+
 /*  */
 table {
 	width: 100%;
@@ -106,7 +111,11 @@ table {
 }
 
 .image {
-	width: 120px;
+	height: 100px;
+    width: 100px;
+	border-radius: 100%;
+	vertical-align: middle;
+	box-sizing: border-box;
 }
 
 .mainlink:hover {

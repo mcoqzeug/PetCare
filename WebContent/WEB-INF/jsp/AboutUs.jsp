@@ -10,21 +10,29 @@
 <jsp:include page="header.jsp"/>
 
 <div class="main">
-	<h1>About Us</h1>
-	<table>
-		<tr>
-			<th></th>
-			<th>Name</th>
-			<th>Job Title</th>
-			<th>Education and Experience </th>
-		</tr>
-		<tr>
-			<td ><img src="${pageContext.request.contextPath}/images/Naveen_Photo.JPG" class="image"/></td>
-			<td>Naveen</td>
-			<td>Cofounder, Software Developer</td>
-			<td>A master student at The Ohio State University majoring in Computer Science and Engineering.</td>
-		</tr>
-	</table>
+	<div class="body">
+		<h1>About Us</h1>
+		<table>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Job Title</th>
+				<th>Education and Experience </th>
+			</tr>
+			<tr>
+				<td ><img src="${pageContext.request.contextPath}/images/Juanxi_Photo.jpg" class="image" alt="Avatar"/></td>
+				<td>Juanxi</td>
+				<td>Cofounder, Software Developer</td>
+				<td>A master student at The Ohio State University majoring in Computer Science and Engineering.</td>
+			</tr>
+			<tr>
+					<td ><img src="${pageContext.request.contextPath}/images/Naveen_Photo.jpg" class="image" alt="Avatar"/></td>
+					<td>Naveen</td>
+					<td>Cofounder, Software Developer</td>
+					<td>A master student at The Ohio State University majoring in Computer Science and Engineering.</td>
+				</tr>
+		</table>
+	</div>
 </div>
 
 <jsp:include page="footer.jsp"/>

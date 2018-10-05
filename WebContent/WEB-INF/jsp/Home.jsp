@@ -12,20 +12,8 @@
 	<jsp:include page="header.jsp"/>
 
 	<div class="main">
-		<div>
-			<h2>Our Vision</h2>
-			<p>
-				Quality and satisfaction to customers with their pets
-			</p>
-		</div>
-		<div>
-			<h2>Our Strategy</h2>
-			<p>
-				Continuously Strive for excellent Service and customer Satisfaction
-			</p>
-		</div>
-
-		<div>
+		<div class="body">
+			<div>
 				<h2>Our Vision</h2>
 				<p>
 					Quality and satisfaction to customers with their pets
@@ -37,32 +25,46 @@
 					Continuously Strive for excellent Service and customer Satisfaction
 				</p>
 			</div>
-
+	
 			<div>
-					<h2>Our Vision</h2>
-					<p>
-						Quality and satisfaction to customers with their pets
-					</p>
-				</div>
-				<div>
-					<h2>Our Strategy</h2>
-					<p>
-						Continuously Strive for excellent Service and customer Satisfaction
-					</p>
-				</div>
-
-				<div>
-						<h2>Our Vision</h2>
-						<p>
-							Quality and satisfaction to customers with their pets
-						</p>
-					</div>
-					<div>
-						<h2>Our Strategy</h2>
-						<p>
-							Continuously Strive for excellent Service and customer Satisfaction
-						</p>
-					</div>
+				<h2>Our Vision</h2>
+				<p>
+					Quality and satisfaction to customers with their pets
+				</p>
+			</div>
+			<div>
+				<h2>Our Strategy</h2>
+				<p>
+					Continuously Strive for excellent Service and customer Satisfaction
+				</p>
+			</div>
+	
+			<div>
+				<h2>Our Vision</h2>
+				<p>
+					Quality and satisfaction to customers with their pets
+				</p>
+			</div>
+			<div>
+				<h2>Our Strategy</h2>
+				<p>
+					Continuously Strive for excellent Service and customer Satisfaction
+				</p>
+			</div>
+	
+			<div>
+				<h2>Our Vision</h2>
+				<p>
+					Quality and satisfaction to customers with their pets
+				</p>
+			</div>
+			<div>
+				<h2>Our Strategy</h2>
+				<p>
+					Continuously Strive for excellent Service and customer Satisfaction
+				</p>
+			</div>
+		</div>
 	</div>
 	
 	<jsp:include page="footer.jsp"/>

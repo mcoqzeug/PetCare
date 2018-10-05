@@ -13,7 +13,8 @@
 	<jsp:include page="header.jsp"/>
 
 	<div class="main">
-		<form:form modelAttribute="shippingInfo" method="post" action="submitShipping">
+		<div class="body">
+			<form:form modelAttribute="shippingInfo" method="post" action="submitShipping">
 				<table>
 					<tr>
 						<td><c:out value="Name"></c:out></td>
@@ -44,6 +45,7 @@
 					</tr>
 				</table>
 			</form:form>
+		</div>
 	</div>
 	
 	<jsp:include page="footer.jsp"/>

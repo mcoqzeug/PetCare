@@ -7,14 +7,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Payment</title>
 </head>
 <body>
 <div class="container">
 	<jsp:include page="header.jsp"/>
 
 	<div class="main">
-		<form:form modelAttribute="paymentInfo" method="post" action="submitPayment">
+		<div class="body">
+			<form:form modelAttribute="paymentInfo" method="post" action="submitPayment">
 				<table>
 					<tr>
 						<td><c:out value="Credit Card Number"></c:out></td>
@@ -37,6 +38,7 @@
 					</tr>
 				</table>
 			</form:form>
+		</div>
 	</div>
 	
 	

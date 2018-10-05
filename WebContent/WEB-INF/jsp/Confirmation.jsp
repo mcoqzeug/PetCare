@@ -10,13 +10,26 @@
 <title>Confirmation</title>
 </head>
 <body>
-<h1>Confirmation</h1>
-<p>
-	Your order has been submitted. <br>
-	Your confirmation number is ${confirmationNum}.
-</p>
-<form:form method="get" action="../purchase">
-	<input type="submit" value="Make another order" />
-</form:form>
+<div class="container">
+	<jsp:include page="header.jsp"/>
+
+	<div class="main">
+		<div class="body">
+			<h1>Confirmation</h1>
+			<p>
+				Your order has been submitted. <br>
+				Your confirmation number is ${confirmationNum}.
+			</p>
+			<div>
+				<form:form method="get" action="../purchase">
+					<input type="submit" value="Make another order" />
+				</form:form>
+			</div>
+		</div>
+	</div>
+
+	<jsp:include page="footer.jsp"/>
+</div>
+
 </body>
 </html>
