@@ -19,7 +19,7 @@
 
 			<h2>Order Information</h2>
 			
-			<table>
+			<table class="orderInfo">
 				<tr>
 					<th>Name</th>
 					<th>Price</th>
@@ -38,7 +38,7 @@
 			
 			<h2>Payment Information</h2>
 			
-			<table>
+			<table class="orderInfo">
 				<tr>
 					<td>Credit Card Number</td>
 					<td><c:out value="${paymentInfo.creditCardNumber}"></c:out></td>
@@ -59,7 +59,7 @@
 			
 			<h2>Shipping Information</h2>
 			
-			<table>
+			<table class="orderInfo">
 				<tr>
 					<td>Name</td>
 					<td><c:out value="${shippingInfo.name}"></c:out></td>

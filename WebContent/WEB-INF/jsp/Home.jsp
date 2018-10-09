@@ -16,7 +16,7 @@
 			<div>
 				<h2>Our Vision</h2>
 				<p>
-					Quality and satisfaction to customers with their pets
+					Quality and satisfaction to customers with their pets.
 				</p>
 			</div>
 			<div>
@@ -25,45 +25,26 @@
 					Continuously Strive for excellent Service and customer Satisfaction
 				</p>
 			</div>
-	
-			<div>
-				<h2>Our Vision</h2>
-				<p>
-					Quality and satisfaction to customers with their pets
-				</p>
-			</div>
-			<div>
-				<h2>Our Strategy</h2>
-				<p>
-					Continuously Strive for excellent Service and customer Satisfaction
-				</p>
-			</div>
-	
-			<div>
-				<h2>Our Vision</h2>
-				<p>
-					Quality and satisfaction to customers with their pets
-				</p>
-			</div>
-			<div>
-				<h2>Our Strategy</h2>
-				<p>
-					Continuously Strive for excellent Service and customer Satisfaction
-				</p>
-			</div>
-	
-			<div>
-				<h2>Our Vision</h2>
-				<p>
-					Quality and satisfaction to customers with their pets
-				</p>
-			</div>
-			<div>
-				<h2>Our Strategy</h2>
-				<p>
-					Continuously Strive for excellent Service and customer Satisfaction
-				</p>
-			</div>
+
+			<table>
+				<tr>
+					<th> Product </th>
+					<th> Cost </th>
+				</tr>
+				<tr>
+					<td> Dry cat Food </td>
+					<td> 50$ </td>
+				</tr>
+				<tr>
+					<td> Wet Cat Litter  </td>
+					<td> 20$ </td>
+				</tr>
+				<tr>
+					<td> Cat Litter </td>
+					<td> 35$ </td>
+				</tr>
+			</table>
+			
 		</div>
 	</div>
 	
