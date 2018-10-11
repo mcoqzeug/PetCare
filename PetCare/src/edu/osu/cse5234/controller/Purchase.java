@@ -1,10 +1,5 @@
 package edu.osu.cse5234.controller;
 
-import java.time.ZonedDateTime;
-//import java.util.List;
-//import java.util.Arrays;
-import java.util.concurrent.ThreadLocalRandom;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.osu.cse5234.business.view.Inventory;
 import edu.osu.cse5234.model.*;
+import edu.osu.cse5234.util.ServiceLocator;
 
 @Controller
 @RequestMapping("/purchase")
@@ -22,19 +19,26 @@ public class Purchase {
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Order order = new Order();
-//		List<Item> items = Arrays.asList(
-//				new Item("Dry Cat Food", "12.99", "0"), 
-//				new Item("Wet Cat Food", "15.99", "0"),
-//				new Item("Cat Litter", "19.99", "0"));
-//		order.setItems(items);
+		Inventory inventory = ServiceLocator.getInventoryService().getAvailableInventory();
+		order.setItems(inventory.getItems());
 		request.setAttribute("order", order);
 		return "OrderEntryForm";
 	}
 
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) {
-		request.getSession().setAttribute("order", order);
-		return "redirect:/purchase/paymentEntry";
+		boolean orderValid = ServiceLocator.getOrderProcessingService().validateItemAvailability(order);
+		if(orderValid)
+		{
+			request.getSession().setAttribute("order", order);
+			return "redirect:/purchase/paymentEntry";
+		}
+		else
+		{
+			System.out.println("Please Resubmit the item quantities");
+			return "redirect:/purchase/OrderEntryForm";
+					
+		}
 	}
 	
 	@RequestMapping(path = "/paymentEntry", method = RequestMethod.GET)
@@ -68,10 +72,8 @@ public class Purchase {
 	
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
 	public String confirmOrder(HttpServletRequest request) {
-		long date = ZonedDateTime.now().toInstant().toEpochMilli();
-		long randomNum = ThreadLocalRandom.current().nextInt(1000, 9999+1);
-		
-		request.getSession().setAttribute("confirmationNum", date*10000+randomNum);
+		String confirmNumb = ServiceLocator.getOrderProcessingService().processOrder((Order)request.getSession().getAttribute("order"));
+		request.getSession().setAttribute("confirmationNum", confirmNumb);
 		return "redirect:/purchase/confirmation";
 	}
 	
