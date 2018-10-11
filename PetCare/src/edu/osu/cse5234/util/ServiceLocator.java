@@ -19,8 +19,7 @@ public class ServiceLocator {
 	public static InventoryService getInventoryService() {
 		try {
 	         return (InventoryService) InitialContext.doLookup(
-//	        		"java:global/PetCare-InventoryManagement-EJBEAR/PetCare-InventoryManagement-EJB/InventoryServiceBean!edu.osu.cse5234.business.view.InventoryService"
-	        		 "java:global/PetCare/InventoryServiceBean!edu.osu.cse5234.business.view.InventoryService");
+	        		"java:global/PetCare-InventoryManagement-EJBEAR/PetCare-InventoryManagement-EJB/InventoryServiceBean!edu.osu.cse5234.business.view.InventoryService");
 		} catch (NamingException ne) {
 				throw new RuntimeException(ne);
 		}

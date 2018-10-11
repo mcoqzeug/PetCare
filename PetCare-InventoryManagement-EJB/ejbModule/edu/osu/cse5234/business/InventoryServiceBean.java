@@ -4,9 +4,8 @@ import edu.osu.cse5234.business.view.Inventory;
 import edu.osu.cse5234.business.view.InventoryService;
 import edu.osu.cse5234.business.view.Item;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Arrays;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -29,7 +28,7 @@ public class InventoryServiceBean implements InventoryService {
 	public Inventory getAvailableInventory() {
 		// TODO Auto-generated method stub
 		Inventory inv = new Inventory();
-		ArrayList<Item> items = (ArrayList<Item>) Arrays.asList(
+		List<Item> items = Arrays.asList(
 				new Item("Dry Cat Food", "12.99", "0"), 
 				new Item("Wet Cat Food", "15.99", "0"),
 				new Item("Cat Litter", "19.99", "0"));
