@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.osu.cse5234.business.OrderProcessingServiceBean;
 import edu.osu.cse5234.business.view.Inventory;
 import edu.osu.cse5234.model.*;
 import edu.osu.cse5234.util.ServiceLocator;
@@ -28,16 +29,12 @@ public class Purchase {
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) {
 		boolean orderValid = ServiceLocator.getOrderProcessingService().validateItemAvailability(order);
-		if(orderValid)
-		{
+		if(orderValid) {
 			request.getSession().setAttribute("order", order);
 			return "redirect:/purchase/paymentEntry";
-		}
-		else
-		{
+		} else {
 			System.out.println("Please Resubmit the item quantities");
 			return "redirect:/purchase/OrderEntryForm";
-					
 		}
 	}
 	
@@ -72,7 +69,9 @@ public class Purchase {
 	
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
 	public String confirmOrder(HttpServletRequest request) {
-		String confirmNumb = ServiceLocator.getOrderProcessingService().processOrder((Order)request.getSession().getAttribute("order"));
+		Order order = (Order)request.getSession().getAttribute("order");
+		OrderProcessingServiceBean orderProcessingService = ServiceLocator.getOrderProcessingService();
+		String confirmNumb = orderProcessingService.processOrder(order);
 		request.getSession().setAttribute("confirmationNum", confirmNumb);
 		return "redirect:/purchase/confirmation";
 	}
