@@ -4,7 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>PetCare-InventoryManagement-EJBClient</project>
-		<project>PetCare-InventoryManagement-EJB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

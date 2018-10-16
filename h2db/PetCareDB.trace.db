@@ -1,0 +1,83 @@
+2018-10-15 15:06:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ITEM VALUES(0, 'Cat Cry Food', 20, 'Good for cat'S[*] HEALTH', 10, 15.99);
+INSERT INTO ITEM VALUES(1, 'CAT CAN FOOD', 20, 'GOOD FOR CAT's health', 10, 19.99) "; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO ITEM VALUES(0, 'Cat Cry Food', 20, 'Good for cat's health', 10, 15.99);
+INSERT INTO ITEM VALUES(1, 'Cat Can Food', 20, 'Good for cat's health', 10, 19.99) [42001-197]
+2018-10-15 15:09:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ITEM VALUES(0, 'Cat Cry Food', 20, 'Good for cat'S[*] HEALTH', 10, 15.99);
+INSERT INTO ITEM VALUES(1, 'CAT CAN FOOD', 20, 'GOOD FOR CAT's health', 10, 19.99) "; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO ITEM VALUES(0, 'Cat Cry Food', 20, 'Good for cat's health', 10, 15.99);
+INSERT INTO ITEM VALUES(1, 'Cat Can Food', 20, 'Good for cat's health', 10, 19.99) [42001-197]
+2018-10-15 15:09:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ITEM VALUES(1, 'Cat Can Food', 20, 'Good for cat's health[*]', 10, 19.99);
+SELECT * FROM ITEM ORDER BY ID;"; SQL statement:
+INSERT INTO ITEM VALUES(1, 'Cat Can Food', 20, 'Good for cat's health', 10, 19.99);
+SELECT * FROM ITEM ORDER BY ID; [42000-197]
+2018-10-15 15:09:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ITEM VALUES(1, 'Cat Can Food', 20, 'Good for cat's health[*]', 10, 19.99);
+SELECT * FROM ITEM ORDER BY ID;"; SQL statement:
+INSERT INTO ITEM VALUES(1, 'Cat Can Food', 20, 'Good for cat's health', 10, 19.99);
+SELECT * FROM ITEM ORDER BY ID; [42000-197]
+2018-10-15 15:28:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO ITEM VALUES(0, 'Cat Dry Food', 20, 'Good for health', 10, 15.99) [21002-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:306)
+	at org.h2.command.Parser.prepareCommand(Parser.java:283)
+	at org.h2.engine.Session.prepareLocal(Session.java:611)
+	at org.h2.engine.Session.prepareCommand(Session.java:549)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1247)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1077)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1386)
+	at org.h2.server.web.WebApp.query(WebApp.java:1060)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1022)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1009)
+	at org.h2.server.web.WebThread.process(WebThread.java:165)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.lang.Thread.run(Unknown Source)
+2018-10-15 15:28:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO ITEM VALUES(1, 'Cat Can Food', 20, 'Good for health', 10, 19.99) [21002-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:306)
+	at org.h2.command.Parser.prepareCommand(Parser.java:283)
+	at org.h2.engine.Session.prepareLocal(Session.java:611)
+	at org.h2.engine.Session.prepareCommand(Session.java:549)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1247)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1077)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1386)
+	at org.h2.server.web.WebApp.query(WebApp.java:1060)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1022)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1009)
+	at org.h2.server.web.WebThread.process(WebThread.java:165)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.lang.Thread.run(Unknown Source)
+2018-10-15 15:39:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "I" not found; SQL statement:
+SELECT i FROM ITEM i [42122-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:150)
+	at org.h2.command.dml.Select.prepare(Select.java:858)
+	at org.h2.command.Parser.prepareCommand(Parser.java:283)
+	at org.h2.engine.Session.prepareLocal(Session.java:611)
+	at org.h2.engine.Session.prepareCommand(Session.java:549)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1247)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1077)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1386)
+	at org.h2.server.web.WebApp.query(WebApp.java:1060)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1022)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1009)
+	at org.h2.server.web.WebThread.process(WebThread.java:165)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.lang.Thread.run(Unknown Source)

@@ -9,14 +9,21 @@ import java.util.Arrays;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * Session Bean implementation class InventoryServiceBean
  */
 @Stateless
+
 @Remote(InventoryService.class)
 public class InventoryServiceBean implements InventoryService {
-
+	@PersistenceContext
+	private EntityManager entityManager;
+	
+	public static final String MY_QUERY = "Select i from Item i";
+	
     /**
      * Default constructor. 
      */
@@ -26,19 +33,30 @@ public class InventoryServiceBean implements InventoryService {
 
 	@Override
 	public Inventory getAvailableInventory() {
-		// TODO Auto-generated method stub
 		Inventory inv = new Inventory();
+//		List<Item> items = entityManager.createQuery(MY_QUERY, Item.class).getResultList();
+//		inv.setItems(items);
 		List<Item> items = Arrays.asList(
 				new Item("Dry Cat Food", "12.99", "0"), 
 				new Item("Wet Cat Food", "15.99", "0"),
 				new Item("Cat Litter", "19.99", "0"));
 		inv.setItems(items);
+		
+		
 		return inv;
 	}
 
 	@Override
 	public boolean validateQuantity(List<Item> items) {
-		// TODO Auto-generated method stub
+		Inventory inv = getAvailableInventory();
+		List<Item> availableItems = inv.getItems();
+		
+		boolean valid = false;
+		
+		for (int i=0; i<items.size(); i++) {
+			
+		}
+		
 		return true;
 	}
 
