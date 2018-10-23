@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="ITEM") 
+@Table(name="ITEM")
 public class Item implements java.io.Serializable{
 	@Transient
 	private static final long serialVersionUID = 5238185927943559551L;
@@ -24,21 +24,30 @@ public class Item implements java.io.Serializable{
 	
 	@Column(name="DESCRIPTION")
 	private String description;
+	
+	@Column(name="ITEM_NUMBER")
+	private int itemNumber;
 
 	@Column(name="UNIT_PRICE")
-	private String price;
+	private double unitPrice;
 	
 	@Column(name="AVAILABLE_QUANTITY")
-	private String quantity;
+	private int availableQuantity;
+	
+//	@Transient
+//	private String quantity;
+//	
+//	@Transient
+//	private String price;
 	
 	public Item() {}
 	
-	public Item(String name, String price, String quantity) {
-		this.name = name;
-		this.price = price;
-		this.quantity = quantity;
-	}
-	
+//	public Item(String name, String price, String quantity) {
+//		this.name = name;
+//		this.price = price;
+//		this.quantity = quantity;
+//	}
+
 	public int getId() {
 		return id;
 	}
@@ -46,15 +55,15 @@ public class Item implements java.io.Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
@@ -62,20 +71,44 @@ public class Item implements java.io.Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	public String getPrice() {
-		return price;
-	}
-	
-	public void setPrice(String price) {
-		this.price = price;
-	}
-	
-	public String getQuantity() {
-		return quantity;
+
+	public int getItemNumber() {
+		return itemNumber;
 	}
 
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
+	public void setItemNumber(int itemNumber) {
+		this.itemNumber = itemNumber;
 	}
+
+	public double getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	public int getAvailableQuantity() {
+		return availableQuantity;
+	}
+
+	public void setAvailableQuantity(int availableQuantity) {
+		this.availableQuantity = availableQuantity;
+	}
+
+//	public String getQuantity() {
+//		return quantity;
+//	}
+//
+//	public void setQuantity(String quantity) {
+//		this.quantity = quantity;
+//	}
+
+//	public String getPrice() {
+//		return price;
+//	}
+//
+//	public void setPrice(String price) {
+//		this.price = price;
+//	}
 }

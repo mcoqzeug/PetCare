@@ -5,6 +5,15 @@ public class PaymentInfo {
 	private String expirationDate;
 	private String cvvCode;
 	private String cardHolderName;
+	private int id;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getCreditCardNumber() {
 		return creditCardNumber;
