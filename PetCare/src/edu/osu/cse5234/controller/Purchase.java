@@ -31,6 +31,7 @@ public class Purchase {
 		for (Item item: items) {
 			lineItems.add(new LineItem(item.getName(), item.getUnitPrice(), 0));
 		}
+		
 		order.setLineItems(lineItems);
 		order.setItems(items);
 		
