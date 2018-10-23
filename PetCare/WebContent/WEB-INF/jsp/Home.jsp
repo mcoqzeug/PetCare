@@ -22,11 +22,11 @@
 			<div>
 				<h2>Our Strategy</h2>
 				<p>
-					Continuously Strive for excellent Service and customer Satisfaction
+					Continuously strive for excellent service and customer satisfaction.
 				</p>
 			</div>
 
-			<table>
+			<!-- <table>
 				<tr>
 					<th> Product </th>
 					<th> Cost </th>
@@ -43,7 +43,7 @@
 					<td> Cat Litter </td>
 					<td> 35$ </td>
 				</tr>
-			</table>
+			</table> -->
 			
 		</div>
 	</div>

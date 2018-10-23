@@ -1,8 +1,5 @@
 */.apt_generated/
-**/classes
-*.settings
-*.classpath
-*.factorypath
-*.project
+*/.settings
+*.class
 *.DS_Store
 .idea

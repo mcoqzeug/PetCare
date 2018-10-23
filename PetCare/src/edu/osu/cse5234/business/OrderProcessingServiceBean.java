@@ -24,9 +24,10 @@ public class OrderProcessingServiceBean {
     }
     
     public String processOrder(Order order) {
-    	ServiceLocator.getInventoryService().validateQuantity(order.getItems());
+    	boolean valid = ServiceLocator.getInventoryService().validateQuantity(order.getItems());  // TODO lineitems
     	InventoryService inventoryService = ServiceLocator.getInventoryService();
-    	inventoryService.updateInventory(order.getItems());
+    	if (valid)
+    		inventoryService.updateInventory(order.getItems());  // TODO lineitems
     	
     	int max = 9999;
     	int min = 1000;
@@ -37,7 +38,8 @@ public class OrderProcessingServiceBean {
     }
 
     public boolean validateItemAvailability(Order order) {
-    	return ServiceLocator.getInventoryService().validateQuantity(order.getItems());
+//    	return ServiceLocator.getInventoryService().validateQuantity(order.getLineItems());
+    	return true;
     }
 
 }

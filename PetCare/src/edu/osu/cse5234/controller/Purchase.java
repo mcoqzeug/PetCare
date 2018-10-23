@@ -1,5 +1,8 @@
 package edu.osu.cse5234.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.osu.cse5234.business.OrderProcessingServiceBean;
 import edu.osu.cse5234.business.view.Inventory;
+import edu.osu.cse5234.business.view.Item;
 import edu.osu.cse5234.model.*;
 import edu.osu.cse5234.util.ServiceLocator;
 
@@ -21,7 +25,15 @@ public class Purchase {
 	public String viewOrderEntryForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Order order = new Order();
 		Inventory inventory = ServiceLocator.getInventoryService().getAvailableInventory();
-		order.setItems(inventory.getItems());
+		List<Item> items = inventory.getItems();
+		List<LineItem> lineItems = new ArrayList<>();
+		
+		for (Item item: items) {
+			lineItems.add(new LineItem(item.getName(), item.getUnitPrice(), 0));
+		}
+		order.setLineItems(lineItems);
+		order.setItems(items);
+		
 		request.setAttribute("order", order);
 		return "OrderEntryForm";
 	}
