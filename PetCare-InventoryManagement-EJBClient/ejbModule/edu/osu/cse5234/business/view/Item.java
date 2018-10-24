@@ -34,19 +34,12 @@ public class Item implements java.io.Serializable{
 	@Column(name="AVAILABLE_QUANTITY")
 	private int availableQuantity;
 	
-//	@Transient
-//	private String quantity;
-//	
-//	@Transient
-//	private String price;
-	
 	public Item() {}
 	
-//	public Item(String name, String price, String quantity) {
-//		this.name = name;
-//		this.price = price;
-//		this.quantity = quantity;
-//	}
+	public Item(String name, int itemNumber) {
+		this.name = name;
+		this.itemNumber = itemNumber;
+	}
 
 	public int getId() {
 		return id;
@@ -95,20 +88,4 @@ public class Item implements java.io.Serializable{
 	public void setAvailableQuantity(int availableQuantity) {
 		this.availableQuantity = availableQuantity;
 	}
-
-//	public String getQuantity() {
-//		return quantity;
-//	}
-//
-//	public void setQuantity(String quantity) {
-//		this.quantity = quantity;
-//	}
-
-//	public String getPrice() {
-//		return price;
-//	}
-//
-//	public void setPrice(String price) {
-//		this.price = price;
-//	}
 }

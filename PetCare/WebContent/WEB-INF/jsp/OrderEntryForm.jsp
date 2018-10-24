@@ -24,14 +24,14 @@
 					<td>Price</td>
 					<td>Quantity</td>
 				</tr>
-			<c:forEach items="${order.items}" var="item" varStatus="loop">
+			<c:forEach items="${order.lineItems}" var="lineItem" varStatus="loop">
 				
 				<tr>
-					<td><c:out value="${item.name}"></c:out></td>
-					<form:input type="hidden" path="items[${loop.index}].name"/>
-					<td><c:out value="$ ${item.unitPrice}"></c:out></td>
-					<form:input type="hidden" path="items[${loop.index}].unitPrice"/>
-					<td><form:input path="items[${loop.index}].itemNumber" /></td>
+					<td><c:out value="${lineItem.itemName}"></c:out></td>
+					<form:input type="hidden" path="lineItems[${loop.index}].itemName"/>
+					<td><c:out value="$ ${lineItem.price}"></c:out></td>
+					<form:input type="hidden" path="lineItems[${loop.index}].price"/>
+					<td><form:input path="lineItems[${loop.index}].quantity" /></td>
 				</tr>
 			</c:forEach>
 				<tr>

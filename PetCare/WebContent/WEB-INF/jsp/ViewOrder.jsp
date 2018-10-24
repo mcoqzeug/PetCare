@@ -25,12 +25,12 @@
 					<th>Price</th>
 					<th>Quantity</th>
 				</tr>
-			<c:forEach items="${order.items}" var="item" varStatus="loop">
-				<c:if test="${Integer.parseInt(item.itemNumber) > 0}">
+			<c:forEach items="${order.lineItems}" var="lineItem" varStatus="loop">
+				<c:if test="${Integer.parseInt(lineItem.quantity) > 0}">
 				<tr>
-					<td><c:out value="${item.name}"></c:out></td>
-					<td><c:out value="$ ${item.unitPrice}"></c:out></td>
-					<td><c:out value="${item.itemNumber}"></c:out></td>
+					<td><c:out value="${lineItem.itemName}"></c:out></td>
+					<td><c:out value="$ ${lineItem.price}"></c:out></td>
+					<td><c:out value="${lineItem.quantity}"></c:out></td>
 				</tr>
 				</c:if>
 			</c:forEach>

@@ -28,12 +28,12 @@ public class Purchase {
 		List<Item> items = inventory.getItems();
 		List<LineItem> lineItems = new ArrayList<>();
 		
+		// Item to LineItem
 		for (Item item: items) {
 			lineItems.add(new LineItem(item.getName(), item.getUnitPrice(), 0));
 		}
 		
 		order.setLineItems(lineItems);
-		order.setItems(items);
 		
 		request.setAttribute("order", order);
 		return "OrderEntryForm";
@@ -83,6 +83,13 @@ public class Purchase {
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
 	public String confirmOrder(HttpServletRequest request) {
 		Order order = (Order)request.getSession().getAttribute("order");
+		
+		ShippingInfo shippingInfo = (ShippingInfo) request.getSession().getAttribute("shippingInfo");
+		PaymentInfo paymentInfo = (PaymentInfo) request.getSession().getAttribute("paymentInfo");
+		
+		order.setPayment(paymentInfo);
+		order.setShipping(shippingInfo);
+		
 		OrderProcessingServiceBean orderProcessingService = ServiceLocator.getOrderProcessingService();
 		String confirmNumb = orderProcessingService.processOrder(order);
 		request.getSession().setAttribute("confirmationNum", confirmNumb);
