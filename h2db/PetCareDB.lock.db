@@ -1,6 +1,6 @@
 #FileLock
-#Wed Oct 24 00:03:09 EDT 2018
+#Wed Oct 24 13:38:28 EDT 2018
 hostName=p51
-id=166a43d8fc6f47bd4e57f9c78eae85f8f73d6d92cc6
+id=166a727eebfc1ae1e8cadcff0510d4331bb3a988ee6
 method=file
-server=192.168.56.1\:4719
+server=192.168.56.1\:6639

@@ -37,7 +37,7 @@ public class OrderProcessingServiceBean {
     	if (valid) {
     		entityManager.persist(order);
     		entityManager.flush();  // ensure all entities related to Order are saved to the database
-    		inventoryService.updateInventory(items);
+    		inventoryService.updateInventory(items); 
 		}
     	
     	int max = 9999;

@@ -57,22 +57,27 @@ public class InventoryServiceBean implements InventoryService {
 	public boolean updateInventory(List<Item> orderItems) {
 		Inventory inventory = getAvailableInventory();
 		List<Item> items = inventory.getItems();
-		Item orderItem, item;
-		int availableQuantity, quantity;
+		int oldQuantity, orderQuantity, itemId;
+		Item orderItem, item, updatedItem;
 		
 		for (int i=0; i<orderItems.size() && i<items.size(); i++) {
 			orderItem = orderItems.get(i);
-			item = items.get(i);
+			item = items.get(i);  // need this only because we want to get the item id
+			itemId = item.getId();
+			updatedItem = (Item)entityManager.find(Item.class, itemId);
 			
-			availableQuantity = item.getAvailableQuantity();
-			quantity = orderItem.getAvailableQuantity();
+			oldQuantity = updatedItem.getAvailableQuantity();
+			orderQuantity = orderItem.getAvailableQuantity();
 			
-			item.setAvailableQuantity(availableQuantity - quantity);
+			updatedItem.setAvailableQuantity(oldQuantity - orderQuantity);  // used to update database
+			entityManager.flush();
+			
+			item.setAvailableQuantity(oldQuantity - orderQuantity);  // used to update inventory
 		}
 		
 		inventory.setItems(items);
 		
-		return true;  // TODO ?
+		return true;  // why?
 	}
 
 }
