@@ -32,13 +32,11 @@ public class OrderProcessingServiceBean {
     	List<LineItem> lineItems = order.getLineItems();
     	List<Item> items = lineItems2Items(lineItems);
     	
-    	boolean valid = ServiceLocator.getInventoryService().validateQuantity(items);
     	InventoryService inventoryService = ServiceLocator.getInventoryService();
-    	if (valid) {
-    		entityManager.persist(order);
-    		entityManager.flush();  // ensure all entities related to Order are saved to the database
-    		inventoryService.updateInventory(items); 
-		}
+    	
+		entityManager.persist(order);
+		entityManager.flush();  // ensure all entities related to Order are saved to the database
+		inventoryService.updateInventory(items);
     	
     	int max = 9999;
     	int min = 1000;

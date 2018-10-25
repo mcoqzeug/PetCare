@@ -34,6 +34,7 @@ public class Purchase {
 		}
 		
 		order.setLineItems(lineItems);
+		order.setStatus("New");
 		
 		request.setAttribute("order", order);
 		return "OrderEntryForm";
@@ -41,6 +42,7 @@ public class Purchase {
 
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) {
+		// TODO: remove lineItems that have 0 quantity?
 		boolean orderValid = ServiceLocator.getOrderProcessingService().validateItemAvailability(order);
 		if(orderValid) {
 			request.getSession().setAttribute("order", order);
