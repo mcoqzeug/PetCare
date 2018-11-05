@@ -8,12 +8,18 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.xml.ws.WebServiceRef;
+
+import com.chase.payment.CreditCardPayment;
+import com.chase.payment.PaymentProcessorService;
 
 import edu.osu.cse5234.business.view.InventoryService;
 import edu.osu.cse5234.business.view.Item;
 import edu.osu.cse5234.model.LineItem;
 import edu.osu.cse5234.model.Order;
+import edu.osu.cse5234.model.PaymentInfo;
 import edu.osu.cse5234.util.ServiceLocator;
+
 
 /**
  * Session Bean implementation class OrderProcessingServiceBean
@@ -23,6 +29,10 @@ import edu.osu.cse5234.util.ServiceLocator;
 public class OrderProcessingServiceBean {
 	@PersistenceContext
 	EntityManager entityManager;
+	
+	@WebServiceRef(wsdlLocation = 
+		       "http://localhost:9080/ChaseBankApplication/PaymentProcessorService?wsdl")
+	private PaymentProcessorService service;
 
     public OrderProcessingServiceBean() {
         // TODO Auto-generated constructor stub
@@ -30,6 +40,28 @@ public class OrderProcessingServiceBean {
     
     public String processOrder(Order order) {
     	List<LineItem> lineItems = order.getLineItems();
+    	
+    	double amount = 0;
+    	
+    	for (LineItem lineItem: lineItems) {
+    		amount += lineItem.getQuantity() * lineItem.getPrice();
+    	}
+    	
+    	// payment service
+    	CreditCardPayment creditCardPayment = new CreditCardPayment();
+    	PaymentInfo paymentInfo = order.getPayment();
+    	creditCardPayment.setCardHolderName(paymentInfo.getCardHolderName());
+    	creditCardPayment.setCreditCardNumber(paymentInfo.getCreditCardNumber());
+    	creditCardPayment.setCvvCode(paymentInfo.getCvvCode());
+    	creditCardPayment.setExpirationDate(paymentInfo.getExpirationDate());
+    	creditCardPayment.setPaymentAmount(amount);
+    	String paymentResponse = service.getPaymentProcessorPort().processPayment(creditCardPayment);
+    	
+    	if(Integer.parseInt(paymentResponse) < 0 ) {
+    		return "Payment did not go through!";
+    	}
+    	
+    	// inventory service
     	List<Item> items = lineItems2Items(lineItems);
     	
     	InventoryService inventoryService = ServiceLocator.getInventoryService();
