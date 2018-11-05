@@ -6,6 +6,13 @@
 		JAX-RS Tools Generated - Do not modify</description>
 		<servlet-name>JAX-RS Servlet</servlet-name>
 		<servlet-class>com.ibm.websphere.jaxrs.server.IBMRestServlet</servlet-class>
+		<init-param>
+			<description>
+				JAX-RS application class for the UPS application
+			</description>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>com.ups.shipping.JaxrsApplication</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<enabled>true</enabled>
 		<async-supported>false</async-supported>

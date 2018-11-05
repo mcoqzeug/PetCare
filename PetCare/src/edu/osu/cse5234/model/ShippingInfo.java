@@ -35,6 +35,9 @@ public class ShippingInfo {
 	@Column(name="EMAIL")
 	private String email;
 	
+	@Column(name="UPS_SHIPPING_REF")
+	private int shippingRefNumber;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")

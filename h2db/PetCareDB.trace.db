@@ -1316,3 +1316,34 @@ SELECT * FROM CUSTOMER_ORDER_LINE_ITEM CUSTOMER_ORDER PAYMENT_INFO [42000-197]
 2018-10-23 21:34:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM PAYMENT_INFO SHIPPING_INFO PAYMENT_INFO[*]"; SQL statement:
 SELECT * FROM PAYMENT_INFO SHIPPING_INFO PAYMENT_INFO [42000-197]
+2018-11-05 12:13:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ALTER SHIPPING_INFO[*] ADD UPS_SHIPPING_REF INTERGER "; expected "TABLE, USER, INDEX, SCHEMA, SEQUENCE, VIEW"; SQL statement:
+alter SHIPPING_INFO add UPS_SHIPPING_REF interger [42001-197]
+2018-11-05 12:13:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "INTERGER"; SQL statement:
+alter table SHIPPING_INFO add UPS_SHIPPING_REF interger [50004-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:4400)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:4215)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:6662)
+	at org.h2.command.Parser.parseAlterTableAddColumn(Parser.java:6324)
+	at org.h2.command.Parser.parseAlterTable(Parser.java:5983)
+	at org.h2.command.Parser.parseAlter(Parser.java:5373)
+	at org.h2.command.Parser.parsePrepared(Parser.java:362)
+	at org.h2.command.Parser.parse(Parser.java:335)
+	at org.h2.command.Parser.parse(Parser.java:307)
+	at org.h2.command.Parser.prepareCommand(Parser.java:278)
+	at org.h2.engine.Session.prepareLocal(Session.java:611)
+	at org.h2.engine.Session.prepareCommand(Session.java:549)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1247)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1077)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1386)
+	at org.h2.server.web.WebApp.query(WebApp.java:1060)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1022)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1009)
+	at org.h2.server.web.WebThread.process(WebThread.java:165)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.lang.Thread.run(Unknown Source)
