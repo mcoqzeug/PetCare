@@ -14,6 +14,8 @@ import javax.jms.TextMessage;
 		activationConfig = { @ActivationConfigProperty(
 				propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 		})
+@MessageDriven(activationConfig = {
+		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue") })
 public class EmailSenderMDB implements MessageListener {
 
     /**
@@ -31,9 +33,18 @@ public class EmailSenderMDB implements MessageListener {
     	try {
 			System.out.println("MDB: " + 
                      ((TextMessage) message).getText());
+	public EmailSenderMDB() {
+	}
+
+	public void onMessage(Message message) {
+		try {
+			System.out.println("MDB: " + ((TextMessage) message).getText());
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}
     }
 
+	}
 }
+
+
