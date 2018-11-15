@@ -80,13 +80,44 @@ public class InventoryUpdater {
 
 	private static void udpateInventory(Map<Integer, Integer> orderedItems, 
                 Connection conn) throws SQLException {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub	
+		//Just subtract the count of available items from the ITEM table.
+		
+		//Get the rset to ITEM Table
+		ResultSet dataquery = ((java.sql.Connection) conn).createStatement().executeQuery(
+				"select ITEM_NUMBER, AVAILABLE_QUANTITY from ITEM");
+		
+		while(dataquery.next())
+		{
+			int item_numb = dataquery.getInt("ITEM_NUMBER");
+			int qty = dataquery.getInt("AVAILABLE_QUANTITY");
+			
+			if(orderedItems.containsKey(item_numb))
+			{
+				if(qty <= orderedItems.get(item_numb)) {
+				int update_qty = orderedItems.get(item_numb) - qty;
+				ResultSet tempQuery = ((java.sql.Connection) conn).createStatement().executeQuery(
+						"update ITEM set AVAILABLE_QUANTITY=update_qty where ITEM_NUMBER=item_numb");
+				}
+				else
+				{
+					System.out.println("Too many qty specified. Try with lower qty..");
+				}
+			}
+		}
 
 	}
 
 	private static void udpateOrderStatus(Collection<Integer> newOrderIds, 
                 Connection conn) throws SQLException {
 		// TODO Auto-generated method stub
+		
+		// Since the order was processed, update the order to "Processed"
+		for(int i: newOrderIds)
+		{
+			ResultSet tempQuery = ((java.sql.Connection) conn).createStatement().executeQuery(
+					"update CUSTOMER_ORDER set STATUS=Processed where ID=i");
+		}
 
 	}
 
