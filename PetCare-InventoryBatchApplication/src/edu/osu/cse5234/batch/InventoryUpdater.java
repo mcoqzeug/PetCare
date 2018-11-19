@@ -27,7 +27,9 @@ public class InventoryUpdater {
 
 	private static Connection createConnection() throws SQLException, ClassNotFoundException {
 		Class.forName("org.h2.Driver");
-		Connection conn = (Connection) DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+		Connection conn = (Connection) DriverManager.getConnection(
+				"jdbc:h2:C:/Users/kevin/Documents/workspace/cse5234/PetCare/h2db/PetCareDB;AUTO_SERVER=TRUE", "sa", "");
+		
 		return conn;
 	}
 
@@ -58,17 +60,14 @@ public class InventoryUpdater {
 			int quantity = rset.getInt("QUANTITY");
 			
 			if(newOrderIds.contains(cust_order_ID)) {
-				if(newResult.containsKey(item_number))
-					newResult.replace(item_number, newResult.get(item_number) + quantity );
-				else
-					newResult.put(item_number, quantity);
+				newResult.put(item_number, newResult.getOrDefault(item_number, 0) + quantity);
 			}
 			else {
 				System.out.println("It was not a new order:"+cust_order_ID);
 			}
 		}
 		
-		return null;
+		return newResult;
 	}
 
 	private static void udpateInventory(Map<Integer, Integer> orderedItems, 
