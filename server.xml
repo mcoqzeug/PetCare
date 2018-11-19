@@ -4,13 +4,13 @@
     <featureManager>
         <feature>javaee-7.0</feature>
         <feature>localConnector-1.0</feature>
-    	<feature>jpa-2.1</feature>
-		<feature>jdbc-4.1</feature>
-		<feature>mdb-3.2</feature>
-	    	<feature>wasJmsClient-2.0</feature>
-	    	<feature>wasJmsServer-1.0</feature>
-	     	<feature>cdi-1.2</feature>
-	</featureManager>
+        <feature>jpa-2.1</feature>
+        <feature>jdbc-4.1</feature>
+        <feature>wasJmsClient-2.0</feature>
+        <feature>wasJmsServer-1.0</feature>
+        <feature>cdi-1.2</feature>
+    </featureManager>
+
     <!-- This template enables security. To get the full use of all the capabilities, a keystore and user registry are required. -->
 
     <!-- For the keystore, default keys are generated and stored in a keystore. To provide the keystore password, generate an
@@ -52,8 +52,6 @@
     <webApplication id="PetCare" location="PetCare.war" name="PetCare"/>
 
     <enterpriseApplication id="PetCare-InventoryManagement-EJBEAR" location="PetCare-InventoryManagement-EJBEAR.ear" name="PetCare-InventoryManagement-EJBEAR"/>
-
-    <enterpriseApplication id="ChaseBankApplicationClientEAR" location="ChaseBankApplicationClientEAR.ear" name="ChaseBankApplicationClientEAR"/>
 
     <enterpriseApplication id="ChaseBankApplicationEAR" location="ChaseBankApplicationEAR.ear" name="ChaseBankApplicationEAR"/>
 

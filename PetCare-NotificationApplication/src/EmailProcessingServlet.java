@@ -1,8 +1,5 @@
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.jms.Queue;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -11,6 +8,7 @@ import javax.jms.JMSConnectionFactory;
 import javax.jms.JMSContext;
 import javax.jms.JMSException;
 import javax.jms.Message;
+import javax.jms.Queue;
 import javax.jms.TextMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/processEmail")
 public class EmailProcessingServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	
 	@Inject
 	@JMSConnectionFactory("jms/emailQCF")
@@ -31,7 +30,7 @@ public class EmailProcessingServlet extends HttpServlet {
 	@Resource(lookup="jms/emailQ")
 	private Queue queue;
 	
-	private static final long serialVersionUID = 1L;
+	
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -51,18 +50,17 @@ public class EmailProcessingServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Message message = jmsContext.createConsumer((Destination) queue).receive(5000);
 		if(message != null && message instanceof TextMessage) {
-		         TextMessage textMessage = (TextMessage) message;
-		         try {
-		            System.out.println("Received: " + textMessage.getText());
-		            out.println("Received: " + textMessage.getText());
-		         } catch (JMSException e) {
-		            out.println("Error: " + e.getMessage());
-		         }
-		    } else {
-		        System.out.println("No or unknown message");
-		        out.println("No or unknown message");
-		    }
-
+	        TextMessage textMessage = (TextMessage) message;
+	        try {
+	            System.out.println("Received: " + textMessage.getText());
+	            out.println("Received: " + textMessage.getText());
+	        } catch (JMSException e) {
+	            out.println("Error: " + e.getMessage());
+	        }
+	    } else {
+	        System.out.println("No or unknown message");
+	        out.println("No or unknown message");
+	    }
 	}
 
 	/**
