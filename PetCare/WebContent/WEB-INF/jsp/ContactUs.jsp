@@ -9,7 +9,7 @@
 <body>
 <jsp:include page="header.jsp"/>
 
-<div class="main">
+<div class="main" align="center">
     <div class="body">
         <h1>Contact Us</h1>
         <table>

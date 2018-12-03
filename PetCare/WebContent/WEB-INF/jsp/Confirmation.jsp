@@ -13,7 +13,7 @@
 <div class="container">
 	<jsp:include page="header.jsp"/>
 
-	<div class="main">
+	<div class="main" align="center">
 		<div class="body">
 			<h1>Confirmation</h1>
 			<p>

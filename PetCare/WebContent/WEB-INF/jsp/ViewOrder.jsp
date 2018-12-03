@@ -13,7 +13,7 @@
 <div class="container">
 	<jsp:include page="header.jsp"/>
 
-	<div class="main">
+	<div class="main" align="center">
 		<div class="body">
 			<h1>View Order</h1>
 
@@ -21,7 +21,7 @@
 			
 			<table class="orderInfo">
 				<tr>
-					<th>Name</th>
+					<th>Product</th>
 					<th>Price</th>
 					<th>Quantity</th>
 				</tr>

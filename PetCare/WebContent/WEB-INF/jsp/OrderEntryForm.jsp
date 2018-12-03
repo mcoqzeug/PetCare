@@ -18,8 +18,9 @@
 	<div class="main">
 		<div class="body">
 			<form:form modelAttribute="order" method="post" action="purchase/submitItems">
-			<table>
+			<table width="800" align="center">
 				<tr>
+					<td></td>
 					<td>Name</td>
 					<td>Price</td>
 					<td>Quantity</td>
@@ -27,6 +28,7 @@
 			<c:forEach items="${order.lineItems}" var="lineItem" varStatus="loop">
 				
 				<tr>
+					<td><img src="${pageContext.request.contextPath}/images/${lineItem.itemName}.jpg" class="image" alt="Avatar"/></td>
 					<td><c:out value="${lineItem.itemName}"></c:out></td>
 					<form:input type="hidden" path="lineItems[${loop.index}].itemName"/>
 					<td><c:out value="$ ${lineItem.price}"></c:out></td>
@@ -35,7 +37,8 @@
 				</tr>
 			</c:forEach>
 				<tr>
-					<td colspan="2"><input type="submit" value="Purchase"></td>
+					<td colspan="3"></td>
+					<td><input type="submit" value="Purchase"></td>
 				</tr>
 			</table>
 			</form:form>

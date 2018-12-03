@@ -9,28 +9,37 @@
 <body>
 <jsp:include page="header.jsp"/>
 
-<div class="main">
+<div class="main" align="center">
 	<div class="body">
 		<h1>About Us</h1>
-		<table>
+		<table width="600">
 			<tr>
 				<th></th>
 				<th>Name</th>
-				<th>Job Title</th>
-				<th>Education and Experience </th>
+				<th>Role</th>
+				<%-- <th>Education and Experience </th> --%>
 			</tr>
 			<tr>
-				<td ><img src="${pageContext.request.contextPath}/images/Juanxi_Photo.jpg" class="image" alt="Avatar"/></td>
+				<td><img src="${pageContext.request.contextPath}/images/Juanxi_Photo.jpg" class="image" alt="Avatar"/></td>
 				<td>Juanxi</td>
-				<td>Cofounder, Software Developer</td>
-				<td>A master student at The Ohio State University majoring in Computer Science and Engineering.</td>
+				<td>Co-founder</td>
+				<%-- <td>A student at The Ohio State University
+				<br> majoring in Computer Science and Engineering.</td> --%>
 			</tr>
 			<tr>
-					<td ><img src="${pageContext.request.contextPath}/images/Naveen_Photo.jpg" class="image" alt="Avatar"/></td>
-					<td>Naveen</td>
-					<td>Cofounder, Software Developer</td>
-					<td>A master student at The Ohio State University majoring in Computer Science and Engineering.</td>
-				</tr>
+				<td><img src="${pageContext.request.contextPath}/images/Naveen_Photo.jpg" class="image" alt="Avatar"/></td>
+				<td>Naveen</td>
+				<td>CEO, Co-founder</td>
+				<%-- <td>A student at The Ohio State University 
+				<br> majoring in Computer Science and Engineering.</td> --%>
+			</tr>
+			<tr>
+				<td><%-- <img src="${pageContext.request.contextPath}/images/Alberto_Photo.jpg" class="image" alt="Avatar"/> --%></td>
+				<td>Alberto</td>
+				<td>Co-founder</td>
+				<%-- <td>A student at The Ohio State University 
+				<br> majoring in Computer Science and Engineering.</td> --%>
+			</tr>
 		</table>
 	</div>
 </div>

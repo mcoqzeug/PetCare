@@ -12,10 +12,13 @@
 <div>
 	<jsp:include page="header.jsp"/>
 
-	<div class="main">
+	<div class="main" align="center">
 		<div class="body">
+			<div>
+				<h1>Shipping Information</h1>
+			</div>
 			<form:form modelAttribute="shippingInfo" method="post" action="submitShipping">
-				<table>
+				<table width="500" align="center">
 					<tr>
 						<td><c:out value="Name"></c:out></td>
 						<td><form:input path="name" /></td>
@@ -41,6 +44,7 @@
 						<td><form:input path="zip" /></td>
 					</tr>
 					<tr>
+						<td></td>
 						<td colspan="2"><input type="submit" value="Submit"></td>
 					</tr>
 				</table>

@@ -11,40 +11,23 @@
 <div class="container">
 	<jsp:include page="header.jsp"/>
 
-	<div class="main">
+	<div class="main" align="center">
 		<div class="body">
 			<div>
-				<h2>Our Vision</h2>
+				<img src="${pageContext.request.contextPath}/images/home.jpg" class="homeImage"/>
+			</div>
+			<div>
+				<h1>Our Vision</h1>
 				<p>
 					Quality and satisfaction to customers with their pets.
 				</p>
 			</div>
 			<div>
-				<h2>Our Strategy</h2>
+				<h1>Our Strategy</h1>
 				<p>
 					Continuously strive for excellent service and customer satisfaction.
 				</p>
 			</div>
-
-			<!-- <table>
-				<tr>
-					<th> Product </th>
-					<th> Cost </th>
-				</tr>
-				<tr>
-					<td> Dry cat Food </td>
-					<td> 50$ </td>
-				</tr>
-				<tr>
-					<td> Wet Cat Litter  </td>
-					<td> 20$ </td>
-				</tr>
-				<tr>
-					<td> Cat Litter </td>
-					<td> 35$ </td>
-				</tr>
-			</table> -->
-			
 		</div>
 	</div>
 	

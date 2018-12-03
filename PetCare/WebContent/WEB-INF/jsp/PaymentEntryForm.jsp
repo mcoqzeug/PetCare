@@ -13,10 +13,13 @@
 <div class="container">
 	<jsp:include page="header.jsp"/>
 
-	<div class="main">
+	<div class="main" align="center">
 		<div class="body">
-			<form:form modelAttribute="paymentInfo" method="post" action="submitPayment">
-				<table>
+			<div>
+				<h1>Payment Information</h1>
+			</div>
+			<form:form modelAttribute="paymentInfo" method="post" action="submitPayment">	
+				<table width="400" align="center">
 					<tr>
 						<td><c:out value="Credit Card Number"></c:out></td>
 						<td><form:input path="creditCardNumber" /></td>
@@ -34,7 +37,8 @@
 						<td><form:input path="cardHolderName" /></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input type="submit" value="Submit"></td>
+						<td></td>
+						<td><input type="submit" value="Submit"></td>
 					</tr>
 				</table>
 			</form:form>

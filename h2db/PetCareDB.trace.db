@@ -1347,3 +1347,6 @@ alter table SHIPPING_INFO add UPS_SHIPPING_REF interger [50004-197]
 	at org.h2.server.web.WebThread.process(WebThread.java:165)
 	at org.h2.server.web.WebThread.run(WebThread.java:90)
 	at java.lang.Thread.run(Unknown Source)
+2018-11-19 18:40:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "ADDRESS1 VARCHAR(255)": "'1223333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333331223333333333333333... (432)"; SQL statement:
+INSERT INTO SHIPPING_INFO (ADDRESS1, ADDRESS2, CITY, COUNTRY, EMAIL, UPS_SHIPPING_REF, STATE, POSTAL_CODE) VALUES (?, ?, ?, ?, ?, ?, ?, ?) [22001-197]
