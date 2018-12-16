@@ -20,21 +20,21 @@
 				<%-- <th>Education and Experience </th> --%>
 			</tr>
 			<tr>
-				<td><img src="${pageContext.request.contextPath}/images/Juanxi_Photo.jpg" class="image" alt="Avatar"/></td>
+				<td><img src="${pageContext.request.contextPath}/images/Juanxi.jpg" class="image" alt="Avatar"/></td>
 				<td>Juanxi</td>
 				<td>Co-founder</td>
 				<%-- <td>A student at The Ohio State University
 				<br> majoring in Computer Science and Engineering.</td> --%>
 			</tr>
 			<tr>
-				<td><img src="${pageContext.request.contextPath}/images/Naveen_Photo.jpg" class="image" alt="Avatar"/></td>
+				<td><img src="${pageContext.request.contextPath}/images/Naveen.jpg" class="image" alt="Avatar"/></td>
 				<td>Naveen</td>
 				<td>CEO, Co-founder</td>
 				<%-- <td>A student at The Ohio State University 
 				<br> majoring in Computer Science and Engineering.</td> --%>
 			</tr>
 			<tr>
-				<td><%-- <img src="${pageContext.request.contextPath}/images/Alberto_Photo.jpg" class="image" alt="Avatar"/> --%></td>
+				<td><img src="${pageContext.request.contextPath}/images/Alberto.jpg" class="image" alt="Avatar"/></td>
 				<td>Alberto</td>
 				<td>Co-founder</td>
 				<%-- <td>A student at The Ohio State University 
