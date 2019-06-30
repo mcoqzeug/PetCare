@@ -26,14 +26,15 @@
 					<td>Quantity</td>
 				</tr>
 			<c:forEach items="${order.lineItems}" var="lineItem" varStatus="loop">
-				
+			
 				<tr>
 					<td><img src="${pageContext.request.contextPath}/images/${lineItem.itemName}.jpg" class="image" alt="Avatar"/></td>
-					<td><c:out value="${lineItem.itemName}"></c:out></td>
-					<form:input type="hidden" path="lineItems[${loop.index}].itemName"/>
-					<td><c:out value="$ ${lineItem.price}"></c:out></td>
-					<form:input type="hidden" path="lineItems[${loop.index}].price"/>
+					<td><c:out value="${lineItem.itemName}"/></td>
+					<td><c:out value="$ ${lineItem.price}"/></td>
 					<td><form:input path="lineItems[${loop.index}].quantity" /></td>
+					<form:input type="hidden" path="lineItems[${loop.index}].itemName"/>
+					<form:input type="hidden" path="lineItems[${loop.index}].price"/>
+					<form:input type="hidden" path="lineItems[${loop.index}].itemId"/>
 				</tr>
 			</c:forEach>
 				<tr>

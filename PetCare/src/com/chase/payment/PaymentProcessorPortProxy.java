@@ -11,7 +11,7 @@ import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Dispatch;
 import javax.xml.ws.Service;
 import javax.xml.ws.soap.SOAPBinding;
-import javax.xml.ws.Action;
+//import javax.xml.ws.Action;
 
 public class PaymentProcessorPortProxy{
 
@@ -36,13 +36,11 @@ public class PaymentProcessorPortProxy{
             _service = null;
             _proxy = null;
             _dispatch = null;
-            try
-            {
+            try {
                 InitialContext ctx = new InitialContext();
                 _service = (com.chase.payment.PaymentProcessorService)ctx.lookup("java:comp/env/service/PaymentProcessorService");
             }
-            catch (NamingException e)
-            {
+            catch (NamingException e) {
                 if ("true".equalsIgnoreCase(System.getProperty("DEBUG_PROXY"))) {
                     System.out.println("JNDI lookup failure: javax.naming.NamingException: " + e.getMessage());
                     e.printStackTrace(System.out);

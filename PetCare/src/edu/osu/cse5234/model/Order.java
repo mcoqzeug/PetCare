@@ -44,7 +44,7 @@ public class Order implements Serializable {
 	@Column(name="CUSTOMER_EMAIL")
 	private String emailAddress;
 	
-	@Column(name="STATUS")
+	@Column(name="ORDER_STATUS")
 	private String status;
 
 	public List<LineItem> getLineItems() {

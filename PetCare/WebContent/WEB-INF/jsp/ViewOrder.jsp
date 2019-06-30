@@ -26,13 +26,11 @@
 					<th>Quantity</th>
 				</tr>
 			<c:forEach items="${order.lineItems}" var="lineItem" varStatus="loop">
-				<c:if test="${Integer.parseInt(lineItem.quantity) > 0}">
 				<tr>
 					<td><c:out value="${lineItem.itemName}"></c:out></td>
 					<td><c:out value="$ ${lineItem.price}"></c:out></td>
 					<td><c:out value="${lineItem.quantity}"></c:out></td>
 				</tr>
-				</c:if>
 			</c:forEach>
 			</table>
 			
@@ -40,20 +38,8 @@
 			
 			<table class="orderInfo">
 				<tr>
-					<td>Credit Card Number</td>
+					<td>Card Number</td>
 					<td><c:out value="${paymentInfo.creditCardNumber}"></c:out></td>
-				</tr>
-				<tr>
-					<td>Expiration Date</td>
-					<td><c:out value="${paymentInfo.expirationDate}"></c:out></td>
-				</tr>
-				<tr>
-					<td>CVV Code</td>
-					<td><c:out value="${paymentInfo.cvvCode}"></c:out></td>
-				</tr>
-				<tr>
-					<td>Cardholder Name</td>
-					<td><c:out value="${paymentInfo.cardHolderName}"></c:out></td>
 				</tr>
 			</table>
 			

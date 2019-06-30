@@ -29,7 +29,7 @@ public class InventoryUpdater {
 		Class.forName("org.h2.Driver");
 		Connection conn = (Connection) DriverManager.getConnection(
 				"jdbc:h2:C:/Users/kevin/Documents/workspace/cse5234/PetCare/h2db/PetCareDB;AUTO_SERVER=TRUE", "sa", "");
-		
+
 		return conn;
 	}
 
@@ -43,8 +43,8 @@ public class InventoryUpdater {
 		return orderIds;
 	}
 
-	private static Map<Integer, Integer> getOrderedLineItems(Collection<Integer> newOrderIds,
-                Connection conn)  throws SQLException {
+	private static Map<Integer, Integer> getOrderedLineItems(
+			Collection<Integer> newOrderIds, Connection conn)  throws SQLException {
 		// TODO Auto-generated method stub
 		// This method returns a map of two integers. The first Integer is item ID, and 
         // the second is cumulative requested quantity across all new orders
@@ -52,18 +52,18 @@ public class InventoryUpdater {
 		Map<Integer, Integer> newResult = new HashMap<>();
 		
 		ResultSet rset = ((java.sql.Connection) conn).createStatement().executeQuery(
-				"select ITEM_NUMBER, QUANTITY, CUSTOMER_ORDER_ID_FK from CUSTOMER_ORDER_LINE_ITEM");
+				"select ITEM_ID, QUANTITY, CUSTOMER_ORDER_ID_FK from CUSTOMER_ORDER_LINE_ITEM");
 		
 		while(rset.next()) {
-			int cust_order_ID = rset.getInt("CUSTOMER_ORDER_ID_FK");
-			int item_number = rset.getInt("ITEM_NUMBER");
+			int customerOrderId = rset.getInt("CUSTOMER_ORDER_ID_FK");
+			int itemId = rset.getInt("ITEM_ID");
 			int quantity = rset.getInt("QUANTITY");
 			
-			if(newOrderIds.contains(cust_order_ID)) {
-				newResult.put(item_number, newResult.getOrDefault(item_number, 0) + quantity);
+			if(newOrderIds.contains(customerOrderId)) {
+				newResult.put(itemId, newResult.getOrDefault(itemId, 0) + quantity);
 			}
 			else {
-				System.out.println("It was not a new order:"+cust_order_ID);
+				System.out.println("It was not a new order:" + customerOrderId);
 			}
 		}
 		
@@ -77,17 +77,17 @@ public class InventoryUpdater {
 		
 		//Get the rset to ITEM Table
 		ResultSet dataquery = ((java.sql.Connection) conn).createStatement().executeQuery(
-				"select ITEM_NUMBER, AVAILABLE_QUANTITY from ITEM");
+				"select ITEM_ID, QUANTITY from ITEM");
 		
 		while(dataquery.next()) {
-			int item_numb = dataquery.getInt("ITEM_NUMBER");
-			int qty = dataquery.getInt("AVAILABLE_QUANTITY");
+			int itemId = dataquery.getInt("ITEM_ID");
+			int quantity = dataquery.getInt("QUANTITY");
 			
-			if(orderedItems.containsKey(item_numb)) {
-				if(qty <= orderedItems.get(item_numb)) {
-				int update_qty = orderedItems.get(item_numb) - qty;
+			if(orderedItems.containsKey(itemId)) {
+				if(quantity <= orderedItems.get(itemId)) {
+				int updateQuantity = orderedItems.get(itemId) - quantity;
 				ResultSet tempQuery = ((java.sql.Connection) conn).createStatement().executeQuery(
-						"update ITEM set AVAILABLE_QUANTITY=update_qty where ITEM_NUMBER=item_numb");
+						"update ITEM set QUANTITY=" + updateQuantity +" where ITEM_ID=" + itemId);
 				}
 				else {
 					System.out.println("Too many qty specified. Try with lower qty..");
@@ -103,7 +103,7 @@ public class InventoryUpdater {
 		// Since the order was processed, update the order to "Processed"
 		for(int i: newOrderIds) {
 			ResultSet tempQuery = ((java.sql.Connection) conn).createStatement().executeQuery(
-					"update CUSTOMER_ORDER set STATUS=Processed where ID=i");
+					"update CUSTOMER_ORDER set STATUS=Processed where ID=" + i);
 		}
 	}
 }

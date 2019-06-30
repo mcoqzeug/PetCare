@@ -1,7 +1,9 @@
 package edu.osu.cse5234.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,26 +25,37 @@ public class Purchase {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Order order = new Order();
 		Inventory inventory = ServiceLocator.getInventoryService().getAvailableInventory();
-		List<Item> items = inventory.getItems();
+		
+		Map<Integer, Item> map = inventory.getMap();
 		List<LineItem> lineItems = new ArrayList<>();
 		
-		// Item to LineItem
-		for (Item item: items) {
-			lineItems.add(new LineItem(item.getName(), item.getUnitPrice(), 0));
+		// Item --> LineItem
+		for (Map.Entry<Integer, Item> entry: map.entrySet()) {
+			Item item = entry.getValue();
+			lineItems.add(new LineItem(item.getId(), 0, item.getName(), item.getUnitPrice()));
 		}
 		
+		Order order = new Order();
 		order.setLineItems(lineItems);
-		order.setStatus("New");
+//		order.setStatus("New");
 		
 		request.setAttribute("order", order);
+		
 		return "OrderEntryForm";
 	}
 
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) {
-		// TODO: remove lineItems that have 0 quantity?
+		// remove lineItems that have 0 quantity
+		List<LineItem> lineItems = order.getLineItems();
+		Iterator<LineItem> itr = lineItems.iterator();
+        while (itr.hasNext()) {
+            LineItem x = itr.next();
+            if (x.getQuantity() == 0)
+                itr.remove();
+        }
+
 		boolean orderValid = ServiceLocator.getOrderProcessingService().validateItemAvailability(order);
 		if(orderValid) {
 			request.getSession().setAttribute("order", order);

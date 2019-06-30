@@ -23,7 +23,7 @@ public class ShippingInfo {
 	@Column(name="CITY")
 	private String city;
 	
-	@Column(name="STATE")
+	@Column(name="STATE_PROVINCE")
 	private String state;
 	
 	@Column(name="COUNTRY")

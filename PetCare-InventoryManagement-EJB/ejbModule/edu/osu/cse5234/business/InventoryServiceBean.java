@@ -1,6 +1,8 @@
 package edu.osu.cse5234.business;
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -20,70 +22,62 @@ public class InventoryServiceBean implements InventoryService {
 	@PersistenceContext
 	EntityManager entityManager;
 	
-	private static final String MY_QUERY = "Select i from Item i";
-	
     public InventoryServiceBean() {
         // TODO Auto-generated constructor stub
     }
 
 	@Override
 	public Inventory getAvailableInventory() {
-		List<Item> items = entityManager.createQuery(MY_QUERY, Item.class).getResultList();
+		// query is case sensitive and should match the class name and field name in java
+		String query = "SELECT i FROM Item i WHERE i.quantity > 0";
+		List<Item> items = entityManager.createQuery(query, Item.class).getResultList();
+		
+		// List --> Map
+		Map<Integer, Item> map = new HashMap<>();
+		for (Item item: items) {
+			map.put(item.getId(), item);
+		}
+		
 		Inventory inventory = new Inventory();
-		inventory.setItems(items);
+		inventory.setMap(map);
 		return inventory;
 	}
 
 	@Override
 	public boolean validateQuantity(List<Item> orderItems) {
-		boolean valid = true;
-		Inventory inventory = getAvailableInventory();
-		List<Item> items = inventory.getItems();
-		Item orderItem, item;
-		
-		for (int i=0; i<orderItems.size() && i<items.size(); i++) {
-			orderItem = orderItems.get(i);
-			item = items.get(i);
-			
-			if (item.getAvailableQuantity() < orderItem.getItemNumber()) {
-				valid = false;
-			}
+		Map<Integer, Item> map = getAvailableInventory().getMap();
+
+		for (Item orderItem: orderItems) {
+			int itemId = orderItem.getId();
+			if (!map.containsKey(itemId)) return false;
+			Item inventoryItem = map.get(itemId);
+			if (inventoryItem.getQuantity() < orderItem.getQuantity()) return false;
 		}
 
-		return valid;
+		return true;
 	}
 
 	@Override
 	public boolean updateInventory(List<Item> orderItems) {
-		Inventory inventory = getAvailableInventory();
-		List<Item> items = inventory.getItems();
-		int quantity, orderQuantity, itemId;
-		Item orderItem, item, updatedItem;
-		
-		for (int i=0; i<orderItems.size() && i<items.size(); i++) {
-			orderItem = orderItems.get(i);
-			item = items.get(i);  // need this only because we want to get the item id and update inventory
-			itemId = item.getId();
-//			updatedItem = (Item)entityManager.find(Item.class, itemId);
-			
-			quantity = item.getAvailableQuantity();
-			orderQuantity = orderItem.getAvailableQuantity();
-			quantity -= orderQuantity;
-			
-//			updatedItem.setAvailableQuantity(quantity);  // used to update database
-//			String updateQuery = "update item set quantity = " + Integer.toString(quantity) + 
-//					" where id=" + Integer.toString(itemId);
-//			entityManager
-//				.createQuery(updateQuery)
-//		        .executeUpdate();
-//			entityManager.flush();
-			
-			item.setAvailableQuantity(quantity);  // used to update inventory
+		Map<Integer, Item> map = getAvailableInventory().getMap();
+
+		for (Item orderItem: orderItems) {
+			int itemId = orderItem.getId();
+			if (!map.containsKey(itemId)) {
+				System.out.println("Ordered item not found!");
+				continue;
+			}
+
+			int inventoryQuantity = map.get(itemId).getQuantity() - orderItem.getQuantity();
+
+			String updateQuery = "update Item set quantity = " + Integer.toString(inventoryQuantity) + 
+					" where id = " + Integer.toString(itemId);
+			System.out.println(updateQuery);
+			entityManager.createQuery(updateQuery).executeUpdate();
+			entityManager.flush();
 		}
 		
-		inventory.setItems(items);
-		
-		return true;  // why?
+		return true;  // TODO: why?
 	}
 
 }

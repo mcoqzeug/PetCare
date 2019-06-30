@@ -20,41 +20,26 @@ public class LineItem implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
 	private int id;
-	
-	@Column(name="ITEM_NUMBER")
-	private int itemNumber;  // TODO ?
-	
-	@Column(name="ITEM_NAME")
-	private String itemName;
-	
+
+	@Column(name="ITEM_ID")
+	private int itemId;
+
 	@Transient
 	private double price;
-	
+
 	@Column(name="QUANTITY")
 	private int quantity;
-	
+
+	@Transient
+	private String itemName;
+
 	public LineItem() {}
-	
-	public LineItem(String itemName, double price, int quantity) {
+
+	public LineItem(int itemId, int quantity, String itemName, double price) {
+		this.itemId = itemId;
+		this.quantity = quantity;
 		this.itemName = itemName;
 		this.price = price;
-		this.quantity = quantity;
-	}
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getItemNumber() {
-		return itemNumber;
-	}
-
-	public void setItemNumber(int itemNumber) {
-		this.itemNumber = itemNumber;
 	}
 
 	public String getItemName() {
@@ -63,6 +48,22 @@ public class LineItem implements Serializable {
 
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
 	}
 
 	public double getPrice() {

@@ -9,36 +9,34 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="ITEM")
-public class Item implements java.io.Serializable{
+@Table(name = "ITEM")
+public class Item implements java.io.Serializable {
 	@Transient
 	private static final long serialVersionUID = 5238185927943559551L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ID")
+	@Column(name = "ID")
 	private int id;
 
-	@Column(name="NAME")
+	@Column(name = "ITEM_NAME")
 	private String name;
-	
-	@Column(name="DESCRIPTION")
-	private String description;
-	
-	@Column(name="ITEM_NUMBER")
-	private int itemNumber;
 
-	@Column(name="UNIT_PRICE")
+	@Column(name = "ITEM_DESCRIPTION")
+	private String description;
+
+	@Column(name = "UNIT_PRICE")
 	private double unitPrice;
-	
-	@Column(name="AVAILABLE_QUANTITY")
-	private int availableQuantity;
-	
-	public Item() {}
-	
-	public Item(String name, int itemNumber) {
-		this.name = name;
-		this.itemNumber = itemNumber;
+
+	@Column(name = "QUANTITY")
+	private int quantity;
+
+	public Item() {
+	}
+
+	public Item(int id, int quantity) {
+		this.id = id;
+		this.quantity = quantity;
 	}
 
 	public int getId() {
@@ -65,14 +63,6 @@ public class Item implements java.io.Serializable{
 		this.description = description;
 	}
 
-	public int getItemNumber() {
-		return itemNumber;
-	}
-
-	public void setItemNumber(int itemNumber) {
-		this.itemNumber = itemNumber;
-	}
-
 	public double getUnitPrice() {
 		return unitPrice;
 	}
@@ -81,11 +71,11 @@ public class Item implements java.io.Serializable{
 		this.unitPrice = unitPrice;
 	}
 
-	public int getAvailableQuantity() {
-		return availableQuantity;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setAvailableQuantity(int availableQuantity) {
-		this.availableQuantity = availableQuantity;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 }

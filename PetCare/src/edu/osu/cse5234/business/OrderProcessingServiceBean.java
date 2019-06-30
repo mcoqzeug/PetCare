@@ -112,9 +112,9 @@ public class OrderProcessingServiceBean {
     	List<Item> items = new ArrayList<>();
     	
     	for (LineItem lineItem : lineItems) {
-    		String itemName = lineItem.getItemName();
+    		int itemId = lineItem.getItemId();
     		int quantity = lineItem.getQuantity();
-    		Item item = new Item(itemName, quantity);
+    		Item item = new Item(itemId, quantity);
     		items.add(item);
     	}
     	

@@ -6,7 +6,7 @@ import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 import javax.json.JsonObject;
-import javax.ws.rs.core.MediaType;
+//import javax.ws.rs.core.MediaType;
 import javax.ws.rs.client.Entity;
 
 public class ShippingInitiationClient {
