@@ -15,7 +15,7 @@ public class ServiceLocator {
 				throw new RuntimeException(ne);
 		}
 	}
-	
+
 	public static InventoryService getInventoryService() {
 		try {
 	         return (InventoryService) InitialContext.doLookup(

@@ -11,12 +11,12 @@ public class Home {
 	public String goToHomePage() throws Exception {
 		return "Home";
 	}
-	
+
 	@RequestMapping(path = "/ContactUs", method = RequestMethod.GET)
 	public String goToContactUsPage() throws Exception {
 		return "ContactUs";
 	}
-	
+
 	@RequestMapping(path = "/AboutUs", method = RequestMethod.GET)
 	public String goToAboutUsPage() throws Exception {
 		return "AboutUs";

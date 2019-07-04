@@ -22,7 +22,7 @@ public class EmailSenderMDB implements MessageListener {
     public EmailSenderMDB() {
         // TODO Auto-generated constructor stub
     }
-	
+
 	/**
      * @see MessageListener#onMessage(Message)
      */

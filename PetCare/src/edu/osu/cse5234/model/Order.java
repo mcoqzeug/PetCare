@@ -24,26 +24,26 @@ public class Order implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="CUSTOMER_ORDER_ID_FK")
 	private List<LineItem> lineItems;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="PAYMENT_INFO_ID_FK")
 	private PaymentInfo payment;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="SHIPPING_INFO_ID_FK")
 	private ShippingInfo shipping;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
 	private int id;
-	
+
 	@Column(name="CUSTOMER_NAME")
 	private String customerName;
-	
+
 	@Column(name="CUSTOMER_EMAIL")
 	private String emailAddress;
-	
+
 	@Column(name="ORDER_STATUS")
 	private String status;
 

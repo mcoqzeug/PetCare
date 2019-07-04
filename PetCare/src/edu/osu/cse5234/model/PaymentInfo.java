@@ -12,24 +12,24 @@ import javax.persistence.Table;
 public class PaymentInfo {
 	@Column(name="CARD_NUM")
 	private String creditCardNumber;
-	
+
 	@Column(name="EXP_DATE")
 	private String expirationDate;
-	
+
 	@Column(name="CVV")
 	private String cvvCode;
-	
+
 	@Column(name="HOLDER_NAME")
 	private String cardHolderName;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
 	private int id;
-	
+
 	@Column(name="CONFIRMATION_NUMBER")
 	private int confirmationNumber;
-	
+
 	public int getId() {
 		return id;
 	}

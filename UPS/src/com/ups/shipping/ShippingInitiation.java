@@ -12,7 +12,7 @@ public class ShippingInitiation {
 	public Response ping() {
 		return Response.ok("Hello, UPS is up and running to serve you ...").build();
 	}
-	
+
 	@POST
 	@Path("/start")
 	@Consumes(MediaType.APPLICATION_JSON)

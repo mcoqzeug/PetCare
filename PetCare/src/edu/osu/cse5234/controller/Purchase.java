@@ -22,26 +22,25 @@ import edu.osu.cse5234.util.ServiceLocator;
 @Controller
 @RequestMapping("/purchase")
 public class Purchase {
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Inventory inventory = ServiceLocator.getInventoryService().getAvailableInventory();
-		
+
 		Map<Integer, Item> map = inventory.getMap();
 		List<LineItem> lineItems = new ArrayList<>();
-		
+
 		// Item --> LineItem
 		for (Map.Entry<Integer, Item> entry: map.entrySet()) {
 			Item item = entry.getValue();
 			lineItems.add(new LineItem(item.getId(), 0, item.getName(), item.getUnitPrice()));
 		}
-		
+
 		Order order = new Order();
 		order.setLineItems(lineItems);
-//		order.setStatus("New");
-		
+
 		request.setAttribute("order", order);
-		
+
 		return "OrderEntryForm";
 	}
 
@@ -52,8 +51,7 @@ public class Purchase {
 		Iterator<LineItem> itr = lineItems.iterator();
         while (itr.hasNext()) {
             LineItem x = itr.next();
-            if (x.getQuantity() == 0)
-                itr.remove();
+            if (x.getQuantity() == 0) itr.remove();
         }
 
 		boolean orderValid = ServiceLocator.getOrderProcessingService().validateItemAvailability(order);
@@ -65,52 +63,52 @@ public class Purchase {
 			return "redirect:/purchase/OrderEntryForm";
 		}
 	}
-	
+
 	@RequestMapping(path = "/paymentEntry", method = RequestMethod.GET)
 	public String viewPaymentEntryForm(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("paymentInfo", new PaymentInfo());	
 		return "PaymentEntryForm";
 	}
-	
+
 	@RequestMapping(path = "/submitPayment", method = RequestMethod.POST)
 	public String submitPayment(@ModelAttribute("paymentInfo") PaymentInfo paymentInfo, HttpServletRequest request) throws Exception {
 		request.getSession().setAttribute("paymentInfo", paymentInfo);
 		return "redirect:/purchase/shippingEntry";
 	}
-	
+
 	@RequestMapping(path = "/shippingEntry", method = RequestMethod.GET)
 	public String viewShippingEntryPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setAttribute("shippingInfo", new ShippingInfo());
 		return "ShippingEntryForm";
 	}
-	
+
 	@RequestMapping(path = "/submitShipping", method = RequestMethod.POST)
 	public String submitShipping(@ModelAttribute("shippingInfo") ShippingInfo shippingInfo, HttpServletRequest request) throws Exception {
 		request.getSession().setAttribute("shippingInfo", shippingInfo);
 		return "redirect:/purchase/viewOrder";
 	}
-	
+
 	@RequestMapping(path = "/viewOrder", method = RequestMethod.GET)
 	public String viewOrderPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return "ViewOrder";
 	}
-	
+
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
 	public String confirmOrder(HttpServletRequest request) {
 		Order order = (Order)request.getSession().getAttribute("order");
-		
+
 		ShippingInfo shippingInfo = (ShippingInfo) request.getSession().getAttribute("shippingInfo");
 		PaymentInfo paymentInfo = (PaymentInfo) request.getSession().getAttribute("paymentInfo");
-		
+
 		order.setPayment(paymentInfo);
 		order.setShipping(shippingInfo);
-		
+
 		OrderProcessingServiceBean orderProcessingService = ServiceLocator.getOrderProcessingService();
 		String confirmNumb = orderProcessingService.processOrder(order);
 		request.getSession().setAttribute("confirmationNum", confirmNumb);
 		return "redirect:/purchase/confirmation";
 	}
-	
+
 	@RequestMapping(path = "/confirmation", method = RequestMethod.GET)
 	public String viewConfirmationPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return "Confirmation";

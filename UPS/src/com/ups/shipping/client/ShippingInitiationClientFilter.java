@@ -9,10 +9,10 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class ShippingInitiationClientFilter implements ClientRequestFilter, ClientResponseFilter {
-	
+
 	public ShippingInitiationClientFilter() {
 	}
-	
+
 	@Override
 	public void filter(ClientRequestContext request) throws IOException {
 		// TODO: Implement client request behavior.

@@ -48,17 +48,17 @@ public class InventoryUpdater {
 		// TODO Auto-generated method stub
 		// This method returns a map of two integers. The first Integer is item ID, and 
         // the second is cumulative requested quantity across all new orders
-		
+
 		Map<Integer, Integer> newResult = new HashMap<>();
-		
+
 		ResultSet rset = ((java.sql.Connection) conn).createStatement().executeQuery(
 				"select ITEM_ID, QUANTITY, CUSTOMER_ORDER_ID_FK from CUSTOMER_ORDER_LINE_ITEM");
-		
+
 		while(rset.next()) {
 			int customerOrderId = rset.getInt("CUSTOMER_ORDER_ID_FK");
 			int itemId = rset.getInt("ITEM_ID");
 			int quantity = rset.getInt("QUANTITY");
-			
+
 			if(newOrderIds.contains(customerOrderId)) {
 				newResult.put(itemId, newResult.getOrDefault(itemId, 0) + quantity);
 			}
@@ -66,7 +66,7 @@ public class InventoryUpdater {
 				System.out.println("It was not a new order:" + customerOrderId);
 			}
 		}
-		
+
 		return newResult;
 	}
 
@@ -74,22 +74,21 @@ public class InventoryUpdater {
                 Connection conn) throws SQLException {
 		// TODO Auto-generated method stub	
 		//Just subtract the count of available items from the ITEM table.
-		
+
 		//Get the rset to ITEM Table
 		ResultSet dataquery = ((java.sql.Connection) conn).createStatement().executeQuery(
 				"select ITEM_ID, QUANTITY from ITEM");
-		
+
 		while(dataquery.next()) {
 			int itemId = dataquery.getInt("ITEM_ID");
 			int quantity = dataquery.getInt("QUANTITY");
-			
+
 			if(orderedItems.containsKey(itemId)) {
 				if(quantity <= orderedItems.get(itemId)) {
-				int updateQuantity = orderedItems.get(itemId) - quantity;
-				ResultSet tempQuery = ((java.sql.Connection) conn).createStatement().executeQuery(
-						"update ITEM set QUANTITY=" + updateQuantity +" where ITEM_ID=" + itemId);
-				}
-				else {
+					int updateQuantity = orderedItems.get(itemId) - quantity;
+					ResultSet tempQuery = ((java.sql.Connection) conn).createStatement().executeQuery(
+							"update ITEM set QUANTITY=" + updateQuantity +" where ITEM_ID=" + itemId);
+				} else {
 					System.out.println("Too many qty specified. Try with lower qty..");
 				}
 			}
@@ -99,7 +98,7 @@ public class InventoryUpdater {
 	private static void udpateOrderStatus(Collection<Integer> newOrderIds, 
                 Connection conn) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 		// Since the order was processed, update the order to "Processed"
 		for(int i: newOrderIds) {
 			ResultSet tempQuery = ((java.sql.Connection) conn).createStatement().executeQuery(

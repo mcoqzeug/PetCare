@@ -22,16 +22,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/processEmail")
 public class EmailProcessingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	@JMSConnectionFactory("jms/emailQCF")
 	private JMSContext jmsContext;
-	
+
 	@Resource(lookup="jms/emailQ")
 	private Queue queue;
-	
-	
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */

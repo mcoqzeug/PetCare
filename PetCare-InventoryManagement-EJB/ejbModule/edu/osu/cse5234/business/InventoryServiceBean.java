@@ -21,7 +21,7 @@ import edu.osu.cse5234.business.view.Item;
 public class InventoryServiceBean implements InventoryService {
 	@PersistenceContext
 	EntityManager entityManager;
-	
+
     public InventoryServiceBean() {
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +31,13 @@ public class InventoryServiceBean implements InventoryService {
 		// query is case sensitive and should match the class name and field name in java
 		String query = "SELECT i FROM Item i WHERE i.quantity > 0";
 		List<Item> items = entityManager.createQuery(query, Item.class).getResultList();
-		
+
 		// List --> Map
 		Map<Integer, Item> map = new HashMap<>();
 		for (Item item: items) {
 			map.put(item.getId(), item);
 		}
-		
+
 		Inventory inventory = new Inventory();
 		inventory.setMap(map);
 		return inventory;
@@ -76,7 +76,7 @@ public class InventoryServiceBean implements InventoryService {
 			entityManager.createQuery(updateQuery).executeUpdate();
 			entityManager.flush();
 		}
-		
+
 		return true;  // TODO: why?
 	}
 
